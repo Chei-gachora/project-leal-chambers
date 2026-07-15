@@ -1,6 +1,7 @@
 <?php
 require_once 'connect.php';
-    
+
+try {
     $dept_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
     // 1. Fetch Department Details safely from the database

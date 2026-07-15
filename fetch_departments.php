@@ -1,6 +1,7 @@
 <?php
 require_once 'connect.php';
-    
+
+try {
     // Updated query to match your actual table structure
     $query = "SELECT d.id, d.name, d.description, COUNT(u.id) as total_lawyers
               FROM departments d

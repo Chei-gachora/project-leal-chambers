@@ -1,6 +1,7 @@
 <?php
 require_once 'connect.php';
 
+try {
     // Start session to get logged-in user
     if (session_status() === PHP_SESSION_NONE) {
         session_start();

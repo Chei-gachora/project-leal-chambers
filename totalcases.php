@@ -1,6 +1,7 @@
 <?php
 require_once 'connect.php';
-    
+
+try {
     // Query to get total cases
     $stmt = $pdo->prepare("SELECT COUNT(*) as total_cases FROM cases");
     $stmt->execute();
