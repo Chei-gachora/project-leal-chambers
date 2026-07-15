@@ -1,3 +1,2 @@
-[phases.setup]
 [packages]
-php = "8.0"
+php = "8.3"
