@@ -7,16 +7,16 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Database Configuration
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'lawyers';     // Make sure this matches your database name
+$host = getenv('DB_HOST') ?: 'localhost';
+$port = getenv('DB_PORT') ?: '3306';
+$user = getenv('DB_USER') ?: 'root';
+$password = getenv('DB_PASSWORD') ?: ''; // Your local password
+$dbname = getenv('DB_NAME') ?: 'legalpro';
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $password, $dbname, $port);
 
-// Check connection
 if ($conn->connect_error) {
-    die("❌ Database Connection Failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Set charset
