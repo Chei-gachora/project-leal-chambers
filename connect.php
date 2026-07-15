@@ -7,11 +7,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Database Configuration
-$host = getenv('DB_HOST') ?: 'localhost';
-$port = getenv('DB_PORT') ?: '3306';
-$user = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASSWORD') ?: ''; // Your local password
-$dbname = getenv('DB_NAME') ?: 'lawyers';
+$host = getenv('MYSQLHOST') ?: (getenv('DB_HOST') ?: 'localhost');
+$port = getenv('MYSQLPORT') ?: (getenv('DB_PORT') ?: '3306');
+$user = getenv('MYSQLUSER') ?: (getenv('DB_USER') ?: 'root');
+$password = getenv('MYSQLPASSWORD') ?: (getenv('DB_PASSWORD') ?: ''); // Your local password
+$dbname = getenv('MYSQLDATABASE') ?: (getenv('DB_NAME') ?: 'lawyers');
 
 // Mysqli Connection
 $conn = new mysqli($host, $user, $password, $dbname, $port);
