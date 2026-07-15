@@ -1,0 +1,26 @@
+.stat-card.border-danger { border-left: 5px solid #dc3545; }
+.stat-card.border-warning { border-left: 5px solid #ffc107; }
+.stat-card.border-success { border-left: 5px solid #28a745; }
+
+.table td strong {
+    color: #1a3c5e;
+}
+
+/* Highlight critical rows */
+tbody tr td.text-danger {
+    font-weight: bold;
+}
+body {
+    
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+                      url('imagelogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

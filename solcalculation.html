@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOL Tracker | Legal Practice Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar p-4">
+                <h4 class="mb-4">
+                    <i class="fas fa-gavel"></i> LegalPro
+                </h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="dashboard.php" class="nav-link"><i class="fas fa-home me-2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a href="calender.php" class="nav-link"><i class="fas fa-calendar-alt me-2"></i> Calendar</a></li>
+                    <li class="nav-item"><a href="casess.php" class="nav-link"><i class="fas fa-folder-open me-2"></i> Cases</a></li>
+                    <li class="nav-item"><a href="soltracker.php" class="nav-link active"><i class="fas fa-clock me-2"></i> SOL Tracker</a></li>
+                    <li class="nav-item"><a href="team.php" class="nav-link"><i class="fas fa-users me-2"></i> Team</a></li>
+                    <li class="nav-item"><a href="documents.php" class="nav-link"><i class="fas fa-file-alt me-2"></i> Documents</a></li>
+                    <li class="nav-item"><a href="Reportts.php" class="nav-link"><i class="fas fa-chart-bar me-2"></i> Reports</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 p-0">
+                <!-- Top Bar -->
+                <div class="top-bar p-3 d-flex justify-content-between align-items-center">
+                    <h5>Statute of Limitations Tracker</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#calcModal">
+                            <i class="fas fa-calculator me-2"></i> Quick SOL Calculator
+                        </button>
+                        <div class="position-relative">
+                            <i class="fas fa-bell fs-5"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">7</span>
+                        </div>
+                        <img src="https://via.placeholder.com/40" class="rounded-circle" alt="Profile">
+                    </div>
+                </div>
+
+                <div class="p-4">
+                    <!-- SOL Summary Cards -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-3">
+                            <div class="card stat-card border-danger">
+                                <div class="card-body">
+                                    <h6 class="text-danger">Critical (≤ 30 days)</h6>
+                                    <h2 class="mb-0 text-danger">5</h2>
+                                    <small class="text-muted">Cases at risk</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stat-card border-warning">
+                                <div class="card-body">
+                                    <h6 class="text-warning">Warning (31-90 days)</h6>
+                                    <h2 class="mb-0 text-warning">8</h2>
+                                    <small class="text-muted">Need attention</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stat-card border-success">
+                                <div class="card-body">
+                                    <h6 class="text-success">Safe (&gt; 90 days)</h6>
+                                    <h2 class="mb-0 text-success">35</h2>
+                                    <small class="text-muted">Within limits</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card stat-card">
+                                <div class="card-body">
+                                    <h6 class="text-muted">Total Cases Tracked</h6>
+                                    <h2 class="mb-0">48</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOL Table -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">Statute of Limitations Overview</h6>
+                            <input type="text" class="form-control w-25" placeholder="Search cases..." id="searchInput">
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table table-hover mb-0" id="solTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Case Number</th>
+                                        <th>Client</th>
+                                        <th>Case Type</th>
+                                        <th>Accrual Date</th>
+                                        <th>Expiry Date</th>
+                                        <th>Days Remaining</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated dynamically or statically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOL Calculator Modal -->
+    <div class="modal fade" id="calcModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Quick SOL Calculator</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Case Type</label>
+                        <select class="form-select" id="caseType">
+                            <option value="6">Contracts / Debt Recovery (6 years)</option>
+                            <option value="3">Torts (General) (3 years)</option>
+                            <option value="12">Land Matters / Recovery (12 years)</option>
+                            <option value="12">Judgment Enforcement (12 years)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Accrual Date</label>
+                        <input type="date" class="form-control" id="accrualDate">
+                    </div>
+                    <button class="btn btn-primary w-100" onclick="calculateSOL()">Calculate Expiry &amp; Status</button>
+                    
+                    <div id="calcResult" class="mt-4 alert" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamic SOL Calculation Function
+        function calculateSOL() {
+            const years = parseInt(document.getElementById('caseType').value);
+            const accrualStr = document.getElementById('accrualDate').value;
+            
+            if (!accrualStr) {
+                alert("Please select an accrual date.");
+                return;
+            }
+
+            const accrualDate = new Date(accrualStr);
+            const expiryDate = new Date(accrualDate);
+            expiryDate.setFullYear(expiryDate.getFullYear() + years);
+
+            const today = new Date();
+            const timeDiff = expiryDate - today;
+            const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            let statusHTML = '';
+            let alertClass = '';
+
+            if (daysRemaining <= 0) {
+                statusHTML = `<strong class="text-danger">EXPIRED</strong>`;
+                alertClass = 'alert-danger';
+            } else if (daysRemaining <= 30) {
+                statusHTML = `<strong class="text-danger">${daysRemaining} days remaining - CRITICAL</strong>`;
+                alertClass = 'alert-danger';
+            } else if (daysRemaining <= 90) {
+                statusHTML = `<strong class="text-warning">${daysRemaining} days remaining - WARNING</strong>`;
+                alertClass = 'alert-warning';
+            } else {
+                statusHTML = `<strong class="text-success">${daysRemaining} days remaining - SAFE</strong>`;
+                alertClass = 'alert-success';
+            }
+
+            const resultDiv = document.getElementById('calcResult');
+            resultDiv.style.display = 'block';
+            resultDiv.className = `mt-4 alert ${alertClass}`;
+            resultDiv.innerHTML = `
+                <h6>Calculation Result</h6>
+                <p><strong>Expiry Date:</strong> ${expiryDate.toLocaleDateString('en-GB')}</p>
+                <p><strong>Days Remaining:</strong> ${daysRemaining}</p>
+                <p>Status: ${statusHTML}</p>
+                <small class="text-muted">Based on Limitation of Actions Act (Cap. 22)</small>
+            `;
+        }
+
+        // Sample data for the table (you can replace with backend data later)
+        const sampleCases = [
+            {
+                caseNo: "L89/2024",
+                client: "John Mwangi",
+                type: "Land Dispute",
+                accrual: "2024-03-15",
+                expiry: "2036-03-15",
+                days: 3550,
+                status: "Safe"
+            },
+            {
+                caseNo: "C245/2025",
+                client: "Kenya Power Ltd",
+                type: "Breach of Contract",
+                accrual: "2025-01-10",
+                expiry: "2031-01-10",
+                days: 1680,
+                status: "Safe"
+            },
+            {
+                caseNo: "T112/2026",
+                client: "Jane Wanjiru",
+                type: "Tort Claim",
+                accrual: "2026-05-05",
+                expiry: "2029-05-05",
+                days: 1060,
+                status: "Warning"
+            }
+        ];
+
+        // Populate table on load
+        function populateTable() {
+            const tbody = document.querySelector('#solTable tbody');
+            tbody.innerHTML = '';
+            
+            sampleCases.forEach(caseItem => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${caseItem.caseNo}</strong></td>
+                    <td>${caseItem.client}</td>
+                    <td>${caseItem.type}</td>
+                    <td>${caseItem.accrual}</td>
+                    <td><strong>${caseItem.expiry}</strong></td>
+                    <td class="${caseItem.days < 90 ? 'text-danger' : 'text-success'}"><strong>${caseItem.days} days</strong></td>
+                    <td><span class="badge ${caseItem.status === 'Safe' ? 'bg-success' : 'bg-warning'}">${caseItem.status}</span></td>
+                    <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#solTable tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Initialize
+        window.onload = populateTable;
+    </script>
+</body>
+</html>

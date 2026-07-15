@@ -1,0 +1,36 @@
+:root {
+    --primary: #1a3c5e;
+}
+
+.calendar-grid td {
+    height: 100px;
+    vertical-align: top;
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.calendar-grid td.bg-warning,
+.calendar-grid td.bg-danger,
+.calendar-grid td.bg-info {
+    color: white;
+    font-weight: bold;
+}
+
+/* Make sidebar links look better when active */
+.nav-link.active {
+    background-color: rgba(255,255,255,0.2) !important;
+    font-weight: 500;
+}
+body{
+       font-family: 'Inter', system-ui, sans-serif;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+                      url('imagelogin.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

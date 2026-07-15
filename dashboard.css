@@ -1,0 +1,192 @@
+/* ==========================================================================
+   LEGALPRO DASHBOARD COMPLETE CSS STYLESHEET
+   ========================================================================== */
+
+/* 1. Global Page Layout & Theme Variables */
+:root {
+    --bg-dark-sidebar: #111c24;
+    --bg-active-blue: #0d6efd;
+    --text-muted-color: #6c757d;
+}
+
+body {
+    background-color: #1a1a1a !important; /* Matches dark ambient layout behind cards */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://via.placeholder.com/1920x1080') !important; /* Fallback background setup */
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    color: #ffffff !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Sidebar Configuration */
+.sidebar {
+    background-color: var(--bg-dark-sidebar) !important;
+    min-height: 100vh;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.sidebar h4 {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.6) !important;
+    padding: 12px 15px !important;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover, 
+.sidebar .nav-link.active {
+    color: #ffffff !important;
+    background-color: var(--bg-active-blue) !important;
+}
+
+/* 3. Top Bar Configuration */
+.top-bar {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+}
+
+/* 4. Overriding Card Structural Collapse (Solves issues from image_a4a576.jpg) */
+.card, .stat-card {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    color: #333333 !important;
+    overflow: visible !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Adjust card component inner items spacing to mirror design 2026-06-11 (23).jpg */
+.stat-card .d-flex {
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+}
+
+.stat-card h6 {
+    color: var(--text-muted-color) !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px !important;
+    white-space: nowrap !important;
+}
+
+.stat-card h3 {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #212529 !important;
+}
+
+.stat-card h3.text-danger {
+    color: #dc3545 !important;
+}
+
+.stat-card small {
+    display: block !important;
+    margin-top: 10px !important;
+    font-weight: 600;
+}
+
+/* Metric Font Icons Alignment */
+.stat-card i.fs-1 {
+    font-size: 2.2rem !important;
+    margin-top: -4px;
+}
+
+/* Custom styles for your custom total cases card block injection */
+.card-content h3 {
+    font-size: 0.95rem !important;
+    color: var(--text-muted-color) !important;
+    font-weight: 600;
+    margin-bottom: 8px !important;
+}
+
+.card-content .number {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #212529 !important;
+}
+
+.card-content .trend {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-top: 10px;
+}
+
+.card-content .trend.up {
+    color: #198754;
+}
+
+/* 5. Middle Blocks - Tables and Event Feeds */
+.card-header {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: #212529 !important;
+    border-bottom: 1px solid #f1f1f1 !important;
+    padding: 15px 20px !important;
+}
+
+.list-group-item {
+    background-color: #ffffff !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: #f1f1f1 !important;
+    color: #212529 !important;
+    padding: 15px 20px !important;
+}
+
+.list-group-item strong {
+    color: #212529 !important;
+}
+
+/* Table Style Overrides */
+.table {
+    color: #212529 !important;
+    margin-bottom: 0 !important;
+}
+
+.table th {
+    font-weight: 600 !important;
+    color: #495057 !important;
+    border-bottom: 2px solid #dee2e6 !important;
+}
+
+.table td, .table th {
+    padding: 12px 16px !important;
+}
+
+/* Badge colors styling */
+.badge {
+    padding: 6px 10px !important;
+    font-weight: 600 !important;
+    border-radius: 4px !important;
+}
+
+.badge.bg-success { background-color: #198754 !important; color: #ffffff !important;}
+.badge.bg-warning { background-color: #ffc107 !important; color: #212529 !important;}
+.badge.bg-info { background-color: #0dcaf0 !important; color: #ffffff !important;}
+.badge.bg-danger { background-color: #dc3545 !important; color: #ffffff !important;}
+
+/* 6. Quick Actions Section (Footer Layout) */
+.btn {
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+}
+
+/* Form Modals Popups Color Reset */
+.modal-content {
+    color: #212529 !important;
+    background-color: #ffffff !important;
+}
+
+.modal-header .btn-close {
+    filter: none !important;
+}

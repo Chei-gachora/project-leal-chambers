@@ -1,0 +1,181 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary: #1e3a8a;
+    --accent: #d97706;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #27272a;
+    line-height: 1.6;
+}
+
+/* Typography */
+.heading-font {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    border-bottom: 1px solid #e4e4e7;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: none;
+    gap: 2rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-links a {
+    color: #52525b;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Hero */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+                url('imagelogin.jpg');
+    color: white;
+    padding: 8rem 1.5rem;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background:#d97706;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: rgba(255, 255, 255, 0.12);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Service Cards */
+.service-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    border-color: #e4e4e7;
+}
+
+/* Other sections */
+.section-padding {
+    padding: 6rem 1.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.max-w-7xl {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+    background: #18181b;
+    color: #a1a1aa;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+    
+    .hero {
+        padding: 10rem 1.5rem;
+    }
+}
