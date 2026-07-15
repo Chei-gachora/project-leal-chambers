@@ -3,20 +3,7 @@ header('Content-Type: application/json');
 
 session_start();   // ← Added for user session
 
-$host = 'localhost';
-$dbname = 'lawyers';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Database Connection Failed']);
-    exit;
-}
+require_once 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $document_title = trim($_POST['document_title'] ?? '');

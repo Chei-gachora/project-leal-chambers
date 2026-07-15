@@ -10,18 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-// Include database configuration connection
-$host = 'localhost';
-$dbname = 'lawyers';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('<div class="alert alert-danger">Database Connection failed: ' . htmlspecialchars($e->getMessage()) . '</div>');
-}
+require_once 'connect.php';
 ?>
 
 <!DOCTYPE html>

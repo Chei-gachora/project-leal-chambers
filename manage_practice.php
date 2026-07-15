@@ -1,13 +1,5 @@
 <?php
-// Database configuration matching your local setup
-$host = 'localhost';
-$db   = 'lawyers'; 
-$user = 'root';
-$pass = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'connect.php';
     
     $dept_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 

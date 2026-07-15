@@ -2,7 +2,7 @@
 session_start();
 header('Content-Type: application/json');
 
-include_once 'connect.php';
+include_once '../connect.php';
 
 try {
     $user_id = (int)($_SESSION['user_id'] ?? 0);

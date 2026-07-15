@@ -2,20 +2,7 @@
 // view_profile.php
 header('Content-Type: application/json');
 
-$host = 'localhost';
-$dbname = 'lawyers';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-} catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
-    exit;
-}
+require_once 'connect.php';
 
 if (!isset($_GET['id'])) {
     http_response_code(400);

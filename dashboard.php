@@ -5,17 +5,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Consistent PDO Connection
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=lawyers;charset=utf8mb4", "root", "");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
-?>
-<?php
-// 1. Include your established database configuration script
-include 'connect.php';
+// Consistent PDO and mysqli Connection
+require_once 'connect.php';
 
 // Get logged-in user ID
 $user_id = $_SESSION['user_id'] ?? 0;
@@ -165,18 +156,7 @@ if (session_status() === PHP_SESSION_NONE)
     session_start();
 
 
-// ==================== DATABASE CONFIG ====================
-$host = 'localhost';
-$dbname = 'lawyers';        // Your database name
-$username = 'root';         // Change if different
-$password = '';             // Your MySQL password
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
@@ -273,8 +253,6 @@ $full_name = $user ? htmlspecialchars(trim($user['firstname'] . ' ' . $user['las
 $user_id = $_SESSION['user_id'] ?? 0;
 
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=lawyers", "root", "");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Total Cases for THIS user only
     $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM cases WHERE user_id = ?");
@@ -460,16 +438,8 @@ try {
 
                         <div class="col-lg-7 mb-4">
                             <?php
-                            $host = 'localhost';
-                            $dbname = 'lawyers';
-                            $username = 'root';
-                            $password = '';
-
                             try {
-                                $pdoTable = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, [
-                                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                                ]);
+                                $pdoTable = $pdo;
 
                                 // Get logged-in user ID
                                 $user_id = $_SESSION['user_id'] ?? 0;

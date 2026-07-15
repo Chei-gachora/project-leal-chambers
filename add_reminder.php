@@ -2,20 +2,7 @@
 header('Content-Type: application/json; charset=utf-8');
 session_start();
 
-$host = 'localhost';
-$dbname = 'lawyers';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Database Connection Failed: ' . $e->getMessage()]);
-    exit;
-}
+require_once 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);

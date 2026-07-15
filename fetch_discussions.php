@@ -1,13 +1,5 @@
 <?php
-// fetch_discussions.php - With Delete Functionality
-$host = 'localhost';
-$db   = 'lawyers';
-$user = 'root';
-$pass = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'connect.php';
 
     // Start session to get logged-in user
     if (session_status() === PHP_SESSION_NONE) {

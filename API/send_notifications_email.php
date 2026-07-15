@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Ensure database link is accessible
-require_once __DIR__ . '/connect.php'; 
+require_once __DIR__ . '/../connect.php'; 
 
 // Manual PHPMailer inclusion matching your local workspace folder path
 require_once __DIR__ . '/PHPMailer/src/Exception.php';

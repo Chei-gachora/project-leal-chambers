@@ -1,14 +1,5 @@
 <?php
-// Database configuration
-$host = 'localhost';
-$dbname = 'lawyers';  // Change to your actual database name
-$username = 'root';    // Change as needed
-$password = '';        // Change as needed
-
-try {
-    // Create PDO connection
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'connect.php';
     
     // Query to get total cases
     $stmt = $pdo->prepare("SELECT COUNT(*) as total_cases FROM cases");
